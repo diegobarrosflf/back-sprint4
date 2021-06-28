@@ -2,6 +2,7 @@ package br.com.rchlo.store.controller;
 
 import br.com.rchlo.store.dto.ProductByColorDto;
 import br.com.rchlo.store.dto.ProductDto;
+import br.com.rchlo.store.projection.ProductByColorProjection;
 import br.com.rchlo.store.repository.ProductRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/reports/products/by-color")
-    public List<ProductByColorDto> productByColorReport() {
+    public List<ProductByColorProjection> productByColorReport() {
         return productRepository.productsByColor();
     }
 }
