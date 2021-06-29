@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +30,8 @@ public class ProductController {
 
     @GetMapping("/products")
     @Cacheable(value = "productList")
-    public Page<ProductDto> productsByColorReport(Pageable pageable) {
+    public Page<ProductDto> productsByColorReport(
+            @PageableDefault(sort="name", direction = Sort.Direction.ASC, page=0, size=3) Pageable pageable) {
         Page<Product> productsPage = productRepository.findAllWithImagesCategoryAndSizesOrderByName(pageable);
 
         return productsPage.map(ProductDto::new);
