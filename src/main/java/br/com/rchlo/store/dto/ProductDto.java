@@ -52,6 +52,10 @@ public class ProductDto {
         this.availableSizes = product.getAvailableSizes().stream().map(Size::getDescription).collect(Collectors.toList());
     }
 
+    public static List<ProductDto> convert(List<Product> products) {
+        return products.stream().map(ProductDto::new).collect(Collectors.toList());
+    }
+
     public Long getCode() {
         return code;
     }

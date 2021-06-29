@@ -30,11 +30,13 @@ public class ProductController {
 
     @GetMapping("/products")
     @Cacheable(value = "productList")
-    public Page<ProductDto> productsByColorReport(
+    public List<ProductDto> productsByColorReport(
             @PageableDefault(sort="name", direction = Sort.Direction.ASC, page=0, size=3) Pageable pageable) {
-        Page<Product> productsPage = productRepository.findAllWithImagesCategoryAndSizesOrderByName(pageable);
 
-        return productsPage.map(ProductDto::new);
+                List<Product> products = productRepository.findAllWithImagesCategoryAndSizesOrderByName(pageable);
+
+        return ProductDto.convert(products);
+
     }
 
     @GetMapping("/reports/products/by-color")
