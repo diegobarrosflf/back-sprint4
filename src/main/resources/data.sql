@@ -1,3 +1,6 @@
+insert ignore into user (id, name, password, role) values
+(1, 'admin', '$2a$10$f/PjQMdiATgabkrbJjhiU.oj8WLpuQKIBdxxNadTb7g61Rd0cHVtK', "ADMIN");
+
 insert ignore into category (id, name, slug, position) values
 (1, 'Novidades', 'novidades', 1),
 (2, 'Calçados', 'calcados', 11),

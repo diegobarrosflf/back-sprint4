@@ -3,6 +3,15 @@ drop table if exists product_image;
 drop table if exists product_available_sizes;
 drop table if exists product;
 drop table if exists category;
+drop table if exists user;
+
+create table user (
+    id bigint(20) not null auto_increment,
+    name varchar(255) not null,
+    password varchar(50) not null,
+    role varchar(10) not null,
+    primary key (id)
+) engine=InnoDB default charset=latin1;
 
 create table category (
     id bigint(20) not null auto_increment,

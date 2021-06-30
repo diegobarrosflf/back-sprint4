@@ -7,8 +7,10 @@ import br.com.rchlo.store.dto.PaymentDto;
 import br.com.rchlo.store.form.CategoryForm;
 import br.com.rchlo.store.form.PaymentForm;
 import br.com.rchlo.store.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;
+
+
 
     public CategoryController(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
