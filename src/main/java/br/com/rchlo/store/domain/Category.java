@@ -25,13 +25,31 @@ public class Category {
         return slug;
     }
 
+
     /** @deprecated */
     protected Category () {
+    }
+
+    public Category(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
     }
 
     public Category(String name, String slug, Integer position) {
         this.name = name;
         this.slug = slug;
         this.position = position;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public void setLastPosition(Integer lastPosition) {
+        this.position = lastPosition + 1;
     }
 }
