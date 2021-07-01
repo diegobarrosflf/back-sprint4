@@ -45,12 +45,22 @@ public class Payment {
         return status;
     }
 
-    public void confirm() {
-        this.status = PaymentStatus.CONFIRMED;
+    public boolean confirm() {
+        if(PaymentStatus.CREATED.equals(this.getStatus())){
+            this.status = PaymentStatus.CONFIRMED;
+            return true;
+        }
+        return false;
     }
 
-    public void cancel() {
-        this.status = PaymentStatus.CANCELED;
+    public boolean cancel() {
+        if(PaymentStatus.CREATED.equals(this.getStatus())){
+            this.status = PaymentStatus.CANCELED;
+            return true;
+        }
+        return false;
     }
+
+
 
 }

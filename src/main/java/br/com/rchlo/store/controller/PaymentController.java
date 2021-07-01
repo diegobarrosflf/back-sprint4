@@ -43,16 +43,18 @@ public class PaymentController {
     @PutMapping("/payments/{id}")
     public ResponseEntity<PaymentDto> confirm(@PathVariable("id") Long id) {
         Payment payment = paymentRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        payment.confirm();
-        return ResponseEntity.ok(new PaymentDto(payment));
+        return payment.confirm() ?
+                ResponseEntity.ok(new PaymentDto(payment)):
+                ResponseEntity.badRequest().build();
     }
 
     @Transactional
     @DeleteMapping("/payments/{id}")
     public ResponseEntity<PaymentDto> cancel(@PathVariable("id") Long id) {
         Payment payment = paymentRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        payment.cancel();
-        return ResponseEntity.ok(new PaymentDto(payment));
+        return payment.cancel() ?
+                ResponseEntity.ok(new PaymentDto(payment)):
+                ResponseEntity.badRequest().build();
     }
 
 }
