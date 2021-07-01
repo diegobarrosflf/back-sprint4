@@ -15,23 +15,9 @@ public class User implements UserDetails {
     private Long id;
     private String name;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -40,31 +26,31 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.name;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

@@ -9,7 +9,7 @@ create table user (
     id bigint(20) not null auto_increment,
     name varchar(255) not null,
     password varchar(50) not null,
-    role varchar(10) not null,
+    role varchar(20) not null,
     primary key (id)
 ) engine=InnoDB default charset=latin1;
 

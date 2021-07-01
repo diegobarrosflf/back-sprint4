@@ -41,9 +41,10 @@ public class CategoryController {
     }
 
     @GetMapping("/admin/categories/{id}")
-    public CategoryDto details(@PathVariable("id") Long id) {
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return new CategoryDto(category);
+    public ResponseEntity<CategoryDto> details(@PathVariable("id") Long id) {
+        Category category = categoryRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return ResponseEntity.ok(new CategoryDto(category));
     }
 
     @Transactional
