@@ -1,16 +1,11 @@
 package br.com.rchlo.store.controller;
 
 import br.com.rchlo.store.domain.Category;
-import br.com.rchlo.store.domain.Payment;
 import br.com.rchlo.store.dto.CategoryDto;
-import br.com.rchlo.store.dto.PaymentDto;
 import br.com.rchlo.store.form.CategoryForm;
-import br.com.rchlo.store.form.PaymentForm;
 import br.com.rchlo.store.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -52,7 +47,7 @@ public class CategoryController {
     public ResponseEntity<CategoryDto> create(@RequestBody @Valid CategoryForm form, UriComponentsBuilder uriBuilder) {
         Category category = form.converter();
         Integer lastPosition = categoryRepository.findLastPosition();
-        category.setLastPosition(lastPosition);
+        category.genereteLastPosition(lastPosition);
         categoryRepository.save(category);
         URI uri = uriBuilder.path("/admin/categories/{id}").buildAndExpand(category.getId()).toUri();
         return ResponseEntity.created(uri).body(new CategoryDto(category));

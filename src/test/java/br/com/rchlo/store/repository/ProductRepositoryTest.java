@@ -1,15 +1,8 @@
 package br.com.rchlo.store.repository;
 
-import br.com.rchlo.store.builder.CategoryBuilder;
-import br.com.rchlo.store.builder.ProductBuilder;
-import br.com.rchlo.store.domain.Category;
 import br.com.rchlo.store.domain.Color;
 import br.com.rchlo.store.domain.Product;
-import br.com.rchlo.store.dto.ProductByColorDto;
 import br.com.rchlo.store.projection.ProductByColorProjection;
-import br.com.rchlo.store.repository.util.JPAUtil;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -18,17 +11,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.util.comparator.Comparators;
 
-import javax.persistence.EntityManager;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

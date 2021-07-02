@@ -45,11 +45,7 @@ public class Category {
         return id;
     }
 
-    public void setPosition(Integer position) {
-        this.position = position;
-    }
-
-    public void setLastPosition(Integer lastPosition) {
+    public void genereteLastPosition(Integer lastPosition) {
         this.position = lastPosition + 1;
     }
 }

@@ -17,10 +17,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // essa query pode ter problemas de performance: @see https://vladmihalcea.com/hibernate-multiplebagfetchexception/ */
     @Query("select distinct p from Product p left join fetch p.images join fetch p.category left join fetch p.availableSizes")
-    public List<Product> findAllWithImagesCategoryAndSizesOrderByName(Pageable pageable);
+    List<Product> findAllWithImagesCategoryAndSizesOrderByName(Pageable pageable);
 
     @Query(value = "select color, count(color) as amount from product p group by color ", nativeQuery = true)
-    public List<ProductByColorProjection> productsByColor();
+    List<ProductByColorProjection> productsByColor();
 
 
 
